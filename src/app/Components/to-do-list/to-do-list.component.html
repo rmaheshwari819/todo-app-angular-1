@@ -1,14 +1,5 @@
 <app-add-to-do-item (addToDo)="addToDo($event)"></app-add-to-do-item>
 
-<div *ngFor="let todo of todosArr"> 
-<app-to-do-item [todoItem] = "todo" (todoDeleteEmitter)="deleteTodo($event)"></app-to-do-item>
+<div *ngFor="let todo of dservice.todosArr">
+    <app-to-do-item [todoItem]="todo" (todoDeleteEmitter)="deleteTodo($event)"></app-to-do-item>
 </div>
-
-
-<button type="button" name="button" (click)='getInfoFromService1()'>Employee1</button>
-
-<div *ngFor="let info of infoReceived1">{{info}} </div>
-
-<button type="button" name="button" (click)='getInfoFromService2()'>Employee1</button>
-
-<div *ngFor="let info of infoReceived2">{{info}} </div>

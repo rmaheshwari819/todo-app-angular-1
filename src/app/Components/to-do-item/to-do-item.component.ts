@@ -1,4 +1,3 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Todo } from 'src/app/Models/Todo';
 import { ServiceClass } from 'src/app/Services/component.services';
@@ -12,12 +11,14 @@ export class ToDoItemComponent implements OnInit {
   todoItem: Todo = new Todo;
   @Output()
   todoDeleteEmitter: EventEmitter<Todo> = new EventEmitter();
-  constructor(serviceclass : ServiceClass) { }
+
+  constructor(private dservice: ServiceClass) { }
 
   ngOnInit(): void {
   }
 
-  onDelete(toDoItem: Todo){
+  onDelete(toDoItem: Todo) {
+    console.log(this.todoItem)
     console.log("Delete is pressed.");
     this.todoDeleteEmitter.emit(toDoItem);
   }

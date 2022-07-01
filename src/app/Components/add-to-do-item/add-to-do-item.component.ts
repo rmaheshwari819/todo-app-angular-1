@@ -1,4 +1,4 @@
-import { Component,EventEmitter,OnInit, Input, Output, importProvidersFrom } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output, importProvidersFrom } from '@angular/core';
 import { Todo } from 'src/app/Models/Todo';
 import { ServiceClass } from 'src/app/Services/component.services';
 
@@ -9,33 +9,29 @@ import { ServiceClass } from 'src/app/Services/component.services';
   providers: [ServiceClass]
 })
 export class AddToDoItemComponent implements OnInit {
-  taskTitle:string = "";
-  taskDescription:string = "";
-  taskActive:boolean = false;
-  todo:Todo = new Todo();
+  taskTitle: string = "";
+  taskDescription: string = "";
+  taskActive: boolean = false;
+  todo: Todo = new Todo();
 
   @Output()
-  addToDo:EventEmitter<Todo> = new EventEmitter();
-  constructor(private serviceclass : ServiceClass) { }
+  addToDo: EventEmitter<Todo> = new EventEmitter();
+  constructor(private serviceclass: ServiceClass) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
-    console.log('step1 success');
-    
-    this.todo.title=this.taskTitle;
-    console.log('step2 success');
-    this.todo.desc=this.taskDescription;
-    console.log('step3 success');
-    this.todo.active=this.taskActive;
-    console.log('step4 success');
-    //this.exampleservice.addToDo(this.todo);
+  onSubmit() {
+    this.todo.title = this.taskTitle;
+    this.todo.desc = this.taskDescription;
+    this.todo.active = this.taskActive;
     this.addToDo.emit(this.todo);
-    console.log('step5 success');
-    this.taskTitle="";
-    this.taskDescription="";
-    this.taskActive=false;
-  }
+    this.taskTitle = "";
+    this.taskDescription = "";
+    this.taskActive = false;
 
+
+    this.serviceclass.addToDo(this.todo)
+
+  }
 }
