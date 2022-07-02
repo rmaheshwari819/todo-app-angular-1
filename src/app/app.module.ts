@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ToDoListComponent } from './Components/to-do-list/to-do-list.component';
 import { ToDoItemComponent } from './Components/to-do-item/to-do-item.component';
 import { AddToDoItemComponent } from './Components/add-to-do-item/add-to-do-item.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

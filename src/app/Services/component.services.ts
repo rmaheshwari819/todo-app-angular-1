@@ -5,11 +5,10 @@ import { Todo } from "../Models/Todo";
 })
 
 export class ServiceClass {
-    todosArr: Todo[] = [];
-
+    todosArr: Todo[] = [];   
     addToDo(todo: Todo) {
         this.todosArr.push({
-            srNo: this.todosArr.length + 1,
+            // srNo: this.todosArr.length + 1,
             title: todo.title,
             desc: todo.desc,
             active: todo.active,
@@ -17,12 +16,13 @@ export class ServiceClass {
         console.log(this.todosArr);
     }
 
+    
     deleteTodo(todo: Todo) {
         console.log(todo);
         this.todosArr.splice(this.todosArr.indexOf(todo), 1);
         console.log(`ToDoItem: ${todo.title} has been deleted.`)
     }
-
+}
 
     //  deleteItem(srNo: number) {
     //     const itemIndex = this.todosArr.findIndex((todo) => todo.srNo === srNo);
@@ -32,4 +32,3 @@ export class ServiceClass {
     //     this.todosArr.splice(itemIndex, 1);
     //     return Promise.resolve(true);
     //   }
-}

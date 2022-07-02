@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Input, Output, importProvidersFrom } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Todo } from 'src/app/Models/Todo';
 import { ServiceClass } from 'src/app/Services/component.services';
+import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-to-do-item',
@@ -9,6 +12,15 @@ import { ServiceClass } from 'src/app/Services/component.services';
   providers: [ServiceClass]
 })
 export class AddToDoItemComponent implements OnInit {
+
+
+  userprofileform = new FormGroup({
+    taskTtl: new FormControl('', Validators.required),
+    taskDesc: new FormControl('', Validators.required),
+    taskAct: new FormControl(false, Validators.required),
+  })
+
+
   taskTitle: string = "";
   taskDescription: string = "";
   taskActive: boolean = false;
@@ -21,17 +33,10 @@ export class AddToDoItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    this.todo.title = this.taskTitle;
-    this.todo.desc = this.taskDescription;
-    this.todo.active = this.taskActive;
-    this.addToDo.emit(this.todo);
-    this.taskTitle = "";
-    this.taskDescription = "";
-    this.taskActive = false;
-
-
-    this.serviceclass.addToDo(this.todo)
-
+   onSubmity(){
+    this.todo.title = this.userprofileform.value.taskTtl;
+    this.todo.desc = this.userprofileform.value.taskDesc;
+    this.todo.active = this.userprofileform.value.taskAct;
+    this.addToDo.emit(this.todo)
   }
 }

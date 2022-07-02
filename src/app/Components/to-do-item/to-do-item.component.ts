@@ -16,7 +16,7 @@ export class ToDoItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   onDelete(toDoItem: Todo) {
     console.log(this.todoItem)
     console.log("Delete is pressed.");

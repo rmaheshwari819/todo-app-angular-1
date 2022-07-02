@@ -1,7 +1,25 @@
-<input type="text" name="taskTitle" [(ngModel)]="taskTitle" placeholder="For e.g. Study">
+<form [formGroup]="userprofileform" (ngSubmit)="onSubmity()">
+    <label>
+        Task Title:
+        <input type="text" name= "taskTtl" formControlName="taskTtl">
+    </label>
+    <label>
+        Task Description:
+        <input type="text" name = "taskDesc" formControlName="taskDesc">
+    </label>
+    <label>
+        Task Active:
+        <input type="checkbox" name = "taskAct" formControlName="taskAct">
+    </label>
+
+        <button type="submit" [disabled]="!userprofileform.valid">Add Task </button>
+</form>
+
+
+<!-- <input type="text" name="taskTitle" [(ngModel)]="taskTitle" placeholder="For e.g. Study">
 
 <input type="text" name="taskDescription" [(ngModel)]="taskDescription" placeholder="Add Description Here">
 
 <input type="checkbox" name="taskActive" [(ngModel)]="taskActive">
 
-<button type="submit" (click)="onSubmit()">Add Task </button>
+<button type="submit" (click)="onSubmit()">Add Task </button> -->
